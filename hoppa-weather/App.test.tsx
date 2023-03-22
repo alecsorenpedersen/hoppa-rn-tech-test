@@ -5,9 +5,7 @@ import App from './App';
 describe('<App />', () => {
 	test('renders welcome message', () => {
 		const { getByText } = render(<App />);
-		const welcomeMessage = getByText(
-			'Open up App.tsx to start working on your app!',
-		);
+		const welcomeMessage = getByText('List');
 		expect(welcomeMessage).toBeDefined();
 	});
 });
