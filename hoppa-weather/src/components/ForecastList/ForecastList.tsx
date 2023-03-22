@@ -1,11 +1,43 @@
-import { View, Text } from 'react-native';
+import {
+	ChanceOfRainContainer,
+	ChanceOfRainLabelText,
+	ChanceOfRainText,
+	ConditionText,
+	Container,
+	Icon,
+	InfoContainer,
+	TempRow,
+	TempText,
+	TextContainer,
+} from './ForecastList.style';
+import { ForecastListItemProps } from '../../types';
 
-const ForecastList = () => {
+const ForecastListItem = ({
+	item,
+	index,
+	onPressHandler,
+}: ForecastListItemProps) => {
+	const { maxtemp_c, mintemp_c, daily_chance_of_rain, condition } = item.day;
+	const icon = `https:${condition.icon}`;
+
 	return (
-		<View>
-			<Text>List</Text>
-		</View>
+		<Container onPress={onPressHandler} testID={`${icon}-icon-${index}`}>
+			<Icon source={{ uri: icon }} />
+			<InfoContainer>
+				<TextContainer>
+					<ConditionText>{condition.text}</ConditionText>
+					<TempRow>
+						<TempText>{`min ${Math.round(mintemp_c)}°C`}</TempText>
+						<TempText>{`max ${Math.round(maxtemp_c)}°C`}</TempText>
+					</TempRow>
+				</TextContainer>
+				<ChanceOfRainContainer>
+					<ChanceOfRainText>{`${daily_chance_of_rain}%`}</ChanceOfRainText>
+					<ChanceOfRainLabelText>{'Chance of Rain'}</ChanceOfRainLabelText>
+				</ChanceOfRainContainer>
+			</InfoContainer>
+		</Container>
 	);
 };
 
-export default ForecastList;
+export default ForecastListItem;

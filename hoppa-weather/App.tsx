@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { WeatherProvider } from './src/context/WeatherForecastContext';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ListScreen from './src/screens/ForecastListScreen/';
@@ -8,11 +8,13 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
 	return (
-		<NavigationContainer>
-			<Stack.Navigator initialRouteName='List'>
-				<Stack.Screen name='List' component={ListScreen} />
-				<Stack.Screen name='Detail' component={DetailScreen} />
-			</Stack.Navigator>
-		</NavigationContainer>
+		<WeatherProvider>
+			<NavigationContainer>
+				<Stack.Navigator initialRouteName='List'>
+					<Stack.Screen name='List' component={ListScreen} />
+					<Stack.Screen name='Detail' component={DetailScreen} />
+				</Stack.Navigator>
+			</NavigationContainer>
+		</WeatherProvider>
 	);
 }
