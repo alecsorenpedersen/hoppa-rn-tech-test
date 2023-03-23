@@ -1,14 +1,19 @@
-import { FlatList } from 'react-native';
+import { FlatList, TextInput, View } from 'react-native';
 import { Forecast } from '../../types/types';
 import { useWeather } from '../../context/WeatherForecastContext';
 import ForecastListItem from '../../components/ForecastList';
 import Separator from '../../components/Common/Separator/';
 import { useNavigation } from '@react-navigation/native';
 import ErrorBox from '../../components/Common/ErrorBox/ErrorBox';
+import Button from '../../components/Common/Button';
+import { useState } from 'react';
+import styled from 'styled-components/native';
 
 export const ListScreen = () => {
 	const navigation = useNavigation();
-	const { forecast, error } = useWeather();
+	const { forecast, error, updateLocation } = useWeather();
+
+	const [searchLocation, setSearchLocation] = useState('');
 
 	const onPressHandler = (item: Forecast) => {
 		navigation.navigate('Detail', {
@@ -29,8 +34,24 @@ export const ListScreen = () => {
 		/>
 	);
 
+	const handleSearch = () => {
+		updateLocation(searchLocation);
+	};
+
 	return (
-		<>
+		<ParentContainer>
+			<ButtonsContainer>
+				<SearchInput
+					onChangeText={setSearchLocation}
+					value={searchLocation}
+					placeholder='Search for a location'
+				/>
+				<Button
+					title='Search'
+					onPress={handleSearch}
+					label={'Update Location'}
+				/>
+			</ButtonsContainer>
 			{error ? (
 				<ErrorBox message={'Oops! Something went wrong!'} />
 			) : (
@@ -42,8 +63,26 @@ export const ListScreen = () => {
 					testID={'forecast-list'}
 				/>
 			)}
-		</>
+		</ParentContainer>
 	);
 };
 
 export default ListScreen;
+
+const ParentContainer = styled.View`
+	flex: 1;
+`;
+
+const SearchInput = styled.TextInput`
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	width: 100%;
+	background-color: white;
+`;
+
+const ButtonsContainer = styled.View`
+	align-items: center;
+	padding: 10px;
+`;

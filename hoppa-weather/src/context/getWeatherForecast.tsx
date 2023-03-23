@@ -2,13 +2,16 @@ import { AxiosResponse } from 'axios';
 import { ForecastResponse } from '../types';
 import weatherApi from '../services/api/weatherApi';
 
-export const getForecast = async (): Promise<
-	AxiosResponse<ForecastResponse>
-> => {
+type Location = string;
+
+export const getForecast = async (
+	location: Location = 'London',
+	days: number = 7,
+): Promise<AxiosResponse<ForecastResponse>> => {
 	const forecast = await weatherApi.get('/forecast.json', {
 		params: {
-			q: 'London',
-			days: 7,
+			q: location,
+			days: days,
 		},
 	});
 

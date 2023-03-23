@@ -1,5 +1,6 @@
 export type ButtonProps = {
-	onPressHandler: () => void;
+	onPress: () => void;
+	title?: string;
 	label: string;
 };
 
@@ -80,6 +81,8 @@ export interface ForecastItemProps {
 export interface WeatherContextValue {
 	forecast: Forecast[] | undefined;
 	error: boolean;
+	updateLocation: (location: string) => Promise<void>;
+	loading: boolean;
 }
 
 export interface WeatherProviderProps {

@@ -11,9 +11,7 @@ const DetailScreen = () => {
 
 	useEffect(() => {
 		navigation.setOptions({
-			headerLeft: () => (
-				<Button onPressHandler={navigation.goBack} label={'Back'} />
-			),
+			headerLeft: () => <Button onPress={navigation.goBack} label={'Back'} />,
 			title,
 		});
 	}, []);

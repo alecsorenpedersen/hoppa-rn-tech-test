@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const WEATHER_API_KEY = '00bd9ebd6c674b3c834202053232003';
+import { WEATHER_API_KEY } from '@env';
 
 const weatherApi = axios.create({
 	baseURL: 'https://api.weatherapi.com/v1',
