@@ -22,10 +22,7 @@ export type DayForecast = {
 
 export type Forecast = {
 	date: string;
-	date_epoch: number;
 	day: DayForecast;
-	astro: Record<string, unknown>;
-	hour: Record<string, unknown>[];
 };
 
 export type ForecastResponse = {

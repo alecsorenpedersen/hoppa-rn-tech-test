@@ -1,5 +1,5 @@
 import { ErrorBoxProps } from '../../../types';
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import {
 	ErrorBoxContainer,
 	ErrorMessage,
@@ -9,7 +9,7 @@ import {
 const ErrorBox = ({ message }: ErrorBoxProps) => (
 	<ScreenContainer>
 		<ErrorBoxContainer>
-			<Icon name='exclamation-circle' size={50} color='red' />
+			{/* <Icon name='exclamation-circle' size={50} color='red' /> */}
 			<ErrorMessage>{message}</ErrorMessage>
 		</ErrorBoxContainer>
 	</ScreenContainer>

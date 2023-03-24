@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
 	return (
 		<WeatherProvider>
-			<NavigationContainer>
+			<NavigationContainer data-testid='navigation-container'>
 				<Stack.Navigator initialRouteName='List'>
 					<Stack.Screen name='List' component={ListScreen} />
 					<Stack.Screen name='Detail' component={DetailScreen} />

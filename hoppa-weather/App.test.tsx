@@ -3,9 +3,9 @@ import { render } from '@testing-library/react-native';
 import App from './App';
 
 describe('<App />', () => {
-	test('renders welcome message', () => {
+	it('should render update location button', () => {
 		const { getByText } = render(<App />);
-		const welcomeMessage = getByText('List');
-		expect(welcomeMessage).toBeDefined();
+		const locationInputButton = getByText('Update Location');
+		expect(locationInputButton).toBeDefined();
 	});
 });

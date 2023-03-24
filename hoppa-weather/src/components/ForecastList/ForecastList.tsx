@@ -21,8 +21,8 @@ const ForecastListItem = ({
 	const icon = `https:${condition.icon}`;
 
 	return (
-		<Container onPress={onPressHandler} testID={`${icon}-icon-${index}`}>
-			<Icon source={{ uri: icon }} />
+		<Container onPress={onPressHandler} testID={'forecast-list-item'}>
+			<Icon source={{ uri: icon }} testID={'forecast-icon'} />
 			<InfoContainer>
 				<TextContainer>
 					<ConditionText>{condition.text}</ConditionText>
